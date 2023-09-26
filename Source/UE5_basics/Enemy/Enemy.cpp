@@ -6,7 +6,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "UE5_basics/Other/HealthComponent.h"
 #include "UE5_basics/Other/WeaponSlot.h"
-#include "UE5_basics/TP_Character/TP_ThirdPersonCharacter.h"
+#include "UE5_basics/TP_Character/TP_Character.h"
 
 // Sets default values
 AEnemy::AEnemy() {
@@ -71,7 +71,7 @@ void AEnemy::FireWithSphereSweep() {
 
 	if (bHit) {
 		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), WeaponSlot.HitEFX, Hit.ImpactPoint);
-		ATP_ThirdPersonCharacter* HitPlayer = Cast<ATP_ThirdPersonCharacter>(Hit.GetActor()); // Maybe here is broken due to new engine version
+		ATP_Character* HitPlayer = Cast<ATP_Character>(Hit.GetActor()); // Maybe here is broken due to new engine version
 
 		if (HitPlayer) {
 			GEngine->AddOnScreenDebugMessage(-1, 4.0f, FColor::Green, TEXT("Hit! Player"));

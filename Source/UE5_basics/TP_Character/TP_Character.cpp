@@ -1,6 +1,7 @@
-// Copyright 1998-2019 Epic Games, Inc. All Rights Reserved.
+// Fill out your copyright notice in the Description page of Project Settings.
 
-#include "TP_ThirdPersonCharacter.h"
+
+#include "TP_Character.h"
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "Components/InputComponent.h"
@@ -16,7 +17,7 @@
 //////////////////////////////////////////////////////////////////////////
 // ATP_ThirdPersonCharacter
 
-ATP_ThirdPersonCharacter::ATP_ThirdPersonCharacter() {
+ATP_Character::ATP_Character() {
 	// Set size for collision capsule
 	GetCapsuleComponent()->InitCapsuleSize(42.f, 96.0f);
 	
@@ -66,7 +67,7 @@ ATP_ThirdPersonCharacter::ATP_ThirdPersonCharacter() {
 	bIsAiming = false;
 }
 
-void ATP_ThirdPersonCharacter::BeginPlay() {
+void ATP_Character::BeginPlay() {
 	Super::BeginPlay();
 	
 	bCanMove = true;
@@ -94,17 +95,17 @@ void ATP_ThirdPersonCharacter::BeginPlay() {
 	}
 
 
-	HealthComponent->OnHealtToZero.AddDynamic(this, &ATP_ThirdPersonCharacter::StopCharacter);
+	HealthComponent->OnHealtToZero.AddDynamic(this, &ATP_Character::StopCharacter);
 }
 
-void ATP_ThirdPersonCharacter::OnConstruction(const FTransform & Transform) {
+void ATP_Character::OnConstruction(const FTransform & Transform) {
 	if (Arsenal.Num() > 0) {
 		WeaponMesh->SetStaticMesh(Arsenal[0].WeaponMesh);
 	}
 }
 
 
-void ATP_ThirdPersonCharacter::Tick(float DeltaTime) {
+void ATP_Character::Tick(float DeltaTime) {
 	Super::Tick(DeltaTime);
 
 	AimTimeline.TickTimeline(DeltaTime);
@@ -116,64 +117,64 @@ void ATP_ThirdPersonCharacter::Tick(float DeltaTime) {
 //////////////////////////////////////////////////////////////////////////
 // Timeline management
 
-void ATP_ThirdPersonCharacter::HandleProgressArmLength(float Length) {
+void ATP_Character::HandleProgressArmLength(float Length) {
 	CameraBoom->TargetArmLength = Length;
 }
 
-void ATP_ThirdPersonCharacter::HandleProgressCameraOffset(FVector Offset) {
+void ATP_Character::HandleProgressCameraOffset(FVector Offset) {
 	CameraBoom->SocketOffset = Offset;
 }
 
-void ATP_ThirdPersonCharacter::HandleProgressCrouch(float Height) {
+void ATP_Character::HandleProgressCrouch(float Height) {
 	ActualEight = Height;
 }
 
 //////////////////////////////////////////////////////////////////////////
 // Input
 
-void ATP_ThirdPersonCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) {
+void ATP_Character::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) {
 	// Set up gameplay key bindings
 	check(PlayerInputComponent);
-	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &ATP_ThirdPersonCharacter::JumpCharacter);
-	PlayerInputComponent->BindAction("Jump", IE_Released, this, &ATP_ThirdPersonCharacter::StopJumpingCharacter);
+	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &ATP_Character::JumpCharacter);
+	PlayerInputComponent->BindAction("Jump", IE_Released, this, &ATP_Character::StopJumpingCharacter);
 	
-	PlayerInputComponent->BindAction("Aim", IE_Pressed, this, &ATP_ThirdPersonCharacter::AimInWeapon);
-	PlayerInputComponent->BindAction("Aim", IE_Released, this, &ATP_ThirdPersonCharacter::AimOutWeapon);
+	PlayerInputComponent->BindAction("Aim", IE_Pressed, this, &ATP_Character::AimInWeapon);
+	PlayerInputComponent->BindAction("Aim", IE_Released, this, &ATP_Character::AimOutWeapon);
 
-	PlayerInputComponent->BindAction("Fire", IE_Pressed, this, &ATP_ThirdPersonCharacter::Fire);
-	PlayerInputComponent->BindAction("Fire", IE_Released, this, &ATP_ThirdPersonCharacter::StopFire);
+	PlayerInputComponent->BindAction("Fire", IE_Pressed, this, &ATP_Character::Fire);
+	PlayerInputComponent->BindAction("Fire", IE_Released, this, &ATP_Character::StopFire);
 
-	PlayerInputComponent->BindAction("Cover", IE_Pressed, this, &ATP_ThirdPersonCharacter::ToggleCover);
+	PlayerInputComponent->BindAction("Cover", IE_Pressed, this, &ATP_Character::ToggleCover);
 	
-	PlayerInputComponent->BindAction("Reload", IE_Pressed, this, &ATP_ThirdPersonCharacter::ReloadWeapon);
+	PlayerInputComponent->BindAction("Reload", IE_Pressed, this, &ATP_Character::ReloadWeapon);
 
-	PlayerInputComponent->BindAxis("MoveForward", this, &ATP_ThirdPersonCharacter::MoveForward);
-	PlayerInputComponent->BindAxis("MoveRight", this, &ATP_ThirdPersonCharacter::MoveRight);
+	PlayerInputComponent->BindAxis("MoveForward", this, &ATP_Character::MoveForward);
+	PlayerInputComponent->BindAxis("MoveRight", this, &ATP_Character::MoveRight);
 
 	// We have 2 versions of the rotation bindings to handle different kinds of devices differently
 	// "turn" handles devices that provide an absolute delta, such as a mouse.
 	// "turnrate" is for devices that we choose to treat as a rate of change, such as an analog joystick
 	PlayerInputComponent->BindAxis("Turn", this, &APawn::AddControllerYawInput);
-	PlayerInputComponent->BindAxis("TurnRate", this, &ATP_ThirdPersonCharacter::TurnAtRate);
+	PlayerInputComponent->BindAxis("TurnRate", this, &ATP_Character::TurnAtRate);
 	PlayerInputComponent->BindAxis("LookUp", this, &APawn::AddControllerPitchInput);
-	PlayerInputComponent->BindAxis("LookUpRate", this, &ATP_ThirdPersonCharacter::LookUpAtRate);
+	PlayerInputComponent->BindAxis("LookUpRate", this, &ATP_Character::LookUpAtRate);
 }
 
 //////////////////////////////////////////////////////////////////////////
 // Movement and rotation
 
-void ATP_ThirdPersonCharacter::TurnAtRate(float Rate) {
+void ATP_Character::TurnAtRate(float Rate) {
 	// calculate delta for this frame from the rate information
 	AddControllerYawInput(Rate * BaseTurnRate * GetWorld()->GetDeltaSeconds());
 }
 
-void ATP_ThirdPersonCharacter::LookUpAtRate(float Rate) {
+void ATP_Character::LookUpAtRate(float Rate) {
 	// calculate delta for this frame from the rate information
 	AddControllerPitchInput(Rate * BaseLookUpRate * GetWorld()->GetDeltaSeconds());
 }
 
 
-void ATP_ThirdPersonCharacter::MoveForward(float Value) {
+void ATP_Character::MoveForward(float Value) {
 	if ((Controller != NULL) && (Value != 0.0f) & !bIsInCover && bCanMove) {
 		// find out which way is forward
 		const FRotator Rotation = Controller->GetControlRotation();
@@ -185,7 +186,7 @@ void ATP_ThirdPersonCharacter::MoveForward(float Value) {
 	}
 }
 
-void ATP_ThirdPersonCharacter::MoveRight(float Value) {
+void ATP_Character::MoveRight(float Value) {
 	if ((Controller != NULL) && (Value != 0.0f) && bCanMove) {
 		if (!bIsInCover) {
 			// find out which way is right
@@ -210,19 +211,19 @@ void ATP_ThirdPersonCharacter::MoveRight(float Value) {
 //////////////////////////////////////////////////////////////////////////
 // Mechanic: Aim
 
-void ATP_ThirdPersonCharacter::AimInWeapon() {
+void ATP_Character::AimInWeapon() {
 	if (!bIsUsingArch) {
 		bIsUsingWeapon = true;
 		AimIn();
 	}
 }
 
-void ATP_ThirdPersonCharacter::AimOutWeapon() {
+void ATP_Character::AimOutWeapon() {
 	bIsUsingWeapon = false;
 	AimOut();
 }
 
-void ATP_ThirdPersonCharacter::AimIn() {
+void ATP_Character::AimIn() {
 	GEngine->AddOnScreenDebugMessage(-1, 0.2f, FColor::Green, TEXT("Aim In"));
 	bUseControllerRotationYaw = true;
 	GetCharacterMovement()->bOrientRotationToMovement = false;
@@ -236,7 +237,7 @@ void ATP_ThirdPersonCharacter::AimIn() {
 	OnCharacterAim.Broadcast();
 }
 
-void ATP_ThirdPersonCharacter::AimOut() {
+void ATP_Character::AimOut() {
 	GEngine->AddOnScreenDebugMessage(-1, 0.2f, FColor::Green, TEXT("Aim Out"));
 	bUseControllerRotationYaw = false;
 	GetCharacterMovement()->bOrientRotationToMovement = true;
@@ -253,24 +254,24 @@ void ATP_ThirdPersonCharacter::AimOut() {
 //////////////////////////////////////////////////////////////////////////
 // Mechanic: Jump
 
-void ATP_ThirdPersonCharacter::JumpCharacter() {
+void ATP_Character::JumpCharacter() {
 	if (CanJump()) {
 		Jump();
 		GEngine->AddOnScreenDebugMessage(-1, 0.2f, FColor::Green, TEXT("jumping"));
 	}
 }
 
-void ATP_ThirdPersonCharacter::StopJumpingCharacter() {
+void ATP_Character::StopJumpingCharacter() {
 	StopJumping();
 }
 
-void ATP_ThirdPersonCharacter::Landed(const FHitResult& Hit) {
+void ATP_Character::Landed(const FHitResult& Hit) {
 	GEngine->AddOnScreenDebugMessage(-1, 0.2f, FColor::Green, TEXT("landed"));
 	OnCharacterLanding.Broadcast();
 }
 
 /** This is a UE4 function of AActor class*/
-void ATP_ThirdPersonCharacter::OnJumped_Implementation() { 
+void ATP_Character::OnJumped_Implementation() { 
 	GEngine->AddOnScreenDebugMessage(-1, 0.2f, FColor::Green, TEXT("On jumped"));
 	OnCharacterJumping.Broadcast();
 }
@@ -278,7 +279,7 @@ void ATP_ThirdPersonCharacter::OnJumped_Implementation() {
 //////////////////////////////////////////////////////////////////////////
 // Mechanic: Crouch
 
-void ATP_ThirdPersonCharacter::CrouchCharacter() {
+void ATP_Character::CrouchCharacter() {
 	
 	if (CanCrouch()) {
 		GEngine->AddOnScreenDebugMessage(-1, 0.2f, FColor::Green, TEXT("Crouch in"));
@@ -288,7 +289,7 @@ void ATP_ThirdPersonCharacter::CrouchCharacter() {
 	}
 }
 
-void ATP_ThirdPersonCharacter::StopCrouchCharacter() {
+void ATP_Character::StopCrouchCharacter() {
 	GEngine->AddOnScreenDebugMessage(-1, 0.2f, FColor::Green, TEXT("Uncrouch"));
 	if (GetCharacterMovement()->IsCrouching()) {
 		UnCrouch();
@@ -300,7 +301,7 @@ void ATP_ThirdPersonCharacter::StopCrouchCharacter() {
 //////////////////////////////////////////////////////////////////////////
 // Mechanic: Fire with weapon
 
-void ATP_ThirdPersonCharacter::FireFromWeapon() {
+void ATP_Character::FireFromWeapon() {
 	FCollisionQueryParams Params;
 	// Ignore the player's pawn
 	Params.AddIgnoredActor(UGameplayStatics::GetPlayerPawn(GetWorld(), 0));
@@ -334,7 +335,7 @@ void ATP_ThirdPersonCharacter::FireFromWeapon() {
 	}
 }
 
-void ATP_ThirdPersonCharacter::AutomaticFire(float DeltaTime) {
+void ATP_Character::AutomaticFire(float DeltaTime) {
 	if (Arsenal[ActiveWeapon].IsAutomatic && bIsFiring) {
 		FireTime += DeltaTime;
 		if (FireTime >= Arsenal[ActiveWeapon].Rate) {
@@ -350,7 +351,7 @@ void ATP_ThirdPersonCharacter::AutomaticFire(float DeltaTime) {
 	}
 }
 
-void ATP_ThirdPersonCharacter::Fire() {
+void ATP_Character::Fire() {
 	if (!bIsReloading) {
 		if (bIsUsingArch) {
 			StartThrow();
@@ -368,19 +369,19 @@ void ATP_ThirdPersonCharacter::Fire() {
 	}
 }
 
-void ATP_ThirdPersonCharacter::StopFire() {
+void ATP_Character::StopFire() {
 	bIsFiring = false;
 	FireTime = 0.0f;
 }
 
-FWeaponSlot ATP_ThirdPersonCharacter::RetrieveActiveWeapon() {
+FWeaponSlot ATP_Character::RetrieveActiveWeapon() {
 	return Arsenal[ActiveWeapon];
 }
 
 //////////////////////////////////////////////////////////////////////////
 // Mechanic: Cover
 
-void ATP_ThirdPersonCharacter::ToggleCover() {
+void ATP_Character::ToggleCover() {
 	bool bIsNear = CheckAroundMe(CheckCoverRadius);
 	if (bIsNear) { // Check if cover is near
 		bIsInCover = !bIsInCover;
@@ -402,13 +403,13 @@ void ATP_ThirdPersonCharacter::ToggleCover() {
 	}
 }
 
-void ATP_ThirdPersonCharacter::ExitFromCover() {
+void ATP_Character::ExitFromCover() {
 	bIsInCover = false;
 	StopCrouchCharacter();
 }
 
 
-bool ATP_ThirdPersonCharacter::CheckAroundMe(float Radius) {
+bool ATP_Character::CheckAroundMe(float Radius) {
 	FCollisionQueryParams Params;
 	Params.AddIgnoredActor(UGameplayStatics::GetPlayerPawn(GetWorld(), 0));
 
@@ -436,7 +437,7 @@ bool ATP_ThirdPersonCharacter::CheckAroundMe(float Radius) {
 //////////////////////////////////////////////////////////////////////////
 // Mechanic: Reload
 
-void ATP_ThirdPersonCharacter::ReloadWeapon() {
+void ATP_Character::ReloadWeapon() {
 	if (!bIsUsingArch) {
 		GEngine->AddOnScreenDebugMessage(-1, 5.2f, FColor::Red, TEXT("Start Reload!"));
 		bIsReloading = true;
@@ -444,30 +445,30 @@ void ATP_ThirdPersonCharacter::ReloadWeapon() {
 	}
 }
 
-void ATP_ThirdPersonCharacter::EndReload() {
+void ATP_Character::EndReload() {
 	GEngine->AddOnScreenDebugMessage(-1, 5.2f, FColor::Orange, TEXT("End Reload!"));
 	bIsReloading = false;
 	MagBullets = Arsenal[ActiveWeapon].MagCapacity;
 }
 
-int ATP_ThirdPersonCharacter::MagCounter() {
+int ATP_Character::MagCounter() {
 	return MagBullets;
 }
 
 //////////////////////////////////////////////////////////////////////////
 // Mechanic: Throw objects
 
-void ATP_ThirdPersonCharacter::StartThrow() {
+void ATP_Character::StartThrow() {
 	OnCharacterStartThrow.Broadcast();
 	EnableMovement(false);
 }
 
-void ATP_ThirdPersonCharacter::EndThrow() {
+void ATP_Character::EndThrow() {
 	OnCharacterThrow.Broadcast();
 	EnableMovement(true);
 }
 
-void ATP_ThirdPersonCharacter::ThrowObject() {
+void ATP_Character::ThrowObject() {
 	FActorSpawnParameters SpawnParams;
 	FVector ThrowStartLocation = FollowCamera->GetComponentLocation();
 	FRotator ThrowRotator = FollowCamera->GetComponentRotation();
@@ -476,7 +477,7 @@ void ATP_ThirdPersonCharacter::ThrowObject() {
 	//ThrowedObj->Init(GetEquipThrowable(), OutVelocity);
 }
 
-FVector ATP_ThirdPersonCharacter::PredictThrowablePath() {
+FVector ATP_Character::PredictThrowablePath() {
 	FVector ThrowStartLocation = FollowCamera->GetComponentLocation();
 	FVector ThrowEndLocation = ThrowStartLocation + (FollowCamera->GetForwardVector() * MaxThrowLength);
 	FVector OutVelocity;
@@ -485,7 +486,7 @@ FVector ATP_ThirdPersonCharacter::PredictThrowablePath() {
 	return OutVelocity;
 }
 
-FThrowable ATP_ThirdPersonCharacter::GetEquipThrowable() {
+FThrowable ATP_Character::GetEquipThrowable() {
 	return Throwables[ActiveThrowable];
 }
 
@@ -493,8 +494,8 @@ FThrowable ATP_ThirdPersonCharacter::GetEquipThrowable() {
 //////////////////////////////////////////////////////////////////////////
 // Utilities
 
-void ATP_ThirdPersonCharacter::StopCharacter() {
-	HealthComponent->OnHealtToZero.RemoveDynamic(this, &ATP_ThirdPersonCharacter::StopCharacter);
+void ATP_Character::StopCharacter() {
+	HealthComponent->OnHealtToZero.RemoveDynamic(this, &ATP_Character::StopCharacter);
 	if (bIsAiming) {
 		AimOut();
 	}
@@ -502,7 +503,7 @@ void ATP_ThirdPersonCharacter::StopCharacter() {
 	EnablePlayerInput(false);
 }
 
-void ATP_ThirdPersonCharacter::EnablePlayerInput(bool Enabled) {
+void ATP_Character::EnablePlayerInput(bool Enabled) {
 	APlayerController* PlayerController = GetWorld()->GetFirstPlayerController();
 
 	if (Enabled) {
@@ -512,14 +513,14 @@ void ATP_ThirdPersonCharacter::EnablePlayerInput(bool Enabled) {
 	}
 }
 
-void ATP_ThirdPersonCharacter::EnableMovement(bool Enabled) {
+void ATP_Character::EnableMovement(bool Enabled) {
 	bCanMove = Enabled;
 }
 
-bool ATP_ThirdPersonCharacter::IsAimingWithWeapon() {
+bool ATP_Character::IsAimingWithWeapon() {
 	return bIsAiming && bIsUsingWeapon;
 }
 
-bool ATP_ThirdPersonCharacter::IsAimingWithArch() {
+bool ATP_Character::IsAimingWithArch() {
 	return bIsAiming && bIsUsingArch;
 }

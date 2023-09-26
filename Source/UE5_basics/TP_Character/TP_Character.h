@@ -12,11 +12,11 @@
 #include "UE5_basics/Other/HealthComponent.h"
 #include "UE5_basics/Other/Throwable.h"
 #include "UE5_basics/Other/WeaponSlot.h"
-#include "TP_ThirdPersonCharacter.generated.h"
+#include "TP_Character.generated.h"
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FGameStateCharacter);
 UCLASS(config=Game)
-class UE5_BASICS_API ATP_ThirdPersonCharacter : public ACharacter
+class UE5_BASICS_API ATP_Character : public ACharacter
 {
 	GENERATED_BODY()
 	
@@ -41,7 +41,7 @@ class UE5_BASICS_API ATP_ThirdPersonCharacter : public ACharacter
 	UHealthComponent* HealthComponent;
 
 public:
-	ATP_ThirdPersonCharacter();
+	ATP_Character();
 
 	/** Broadcasted when character land on ground */
 	UPROPERTY(BlueprintAssignable)
