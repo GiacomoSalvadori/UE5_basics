@@ -12,8 +12,9 @@
   <component name="ChangeListManager">
     <list default="true" id="aeaeb703-cd09-4f17-afcf-45ecd4c3d1b9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.UE5_basics/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UE5_basics/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UE5_basics.uproject" beforeDir="false" afterPath="$PROJECT_DIR$/UE5_basics.uproject" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Lesson-1/BP_FirstActor.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Lesson-1/BP_FirstActor.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/UE5_basics/Basics/MyFirstActor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/UE5_basics/Basics/MyFirstActor.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/UE5_basics/Basics/MyFirstActor.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/UE5_basics/Basics/MyFirstActor.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -225,6 +226,7 @@
       <workItem from="1695651994113" duration="1059000" />
       <workItem from="1695653103401" duration="1219000" />
       <workItem from="1695654470532" duration="2100000" />
+      <workItem from="1695730486315" duration="1016000" />
     </task>
     <servers />
   </component>

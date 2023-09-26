@@ -52,6 +52,8 @@ void AMyFirstActor::OnBeginOverlap(AActor* OverlappedActor, AActor* OtherActor)
 		if(SensedClass == OtherActorClass || OtherActorClass->IsChildOf(SensedClass))
 		{
 			GEngine->AddOnScreenDebugMessage(-1, 2.f, FColor::Cyan, "IN: "+OtherActor->GetName());
+			//OnSomethingEnter();
+			break;
 		}
 	}
 	

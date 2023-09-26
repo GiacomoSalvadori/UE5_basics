@@ -37,6 +37,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Settings", meta=(DisplayName="Sensed Characters"))
 	TArray<TSubclassOf<AActor>> SensedCharacterClasses = {ACharacter::StaticClass()};
 
+	//UFUNCTION(BlueprintImplementableEvent)
+	//void OnSomethingEnter();
+
 private:
 
 	UFUNCTION()
