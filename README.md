@@ -4,7 +4,7 @@ A project about the basics of the engine. This is used on a 5 lessons programm f
 ## Lesson 1 - slides
 - Slide 1 to 5
 - Let's open the engine: take a tour of everything we have
-- Slide 6 to 10, there's everything just search + Unity vs UE4
+- Slide 6 to 10, there's everything just search + Unity vs UE
 - Let's start from scratch: create a TPS C++ project and create a simple blueprint!
 - Let's take a look to class architecture: slide 11, 14
 - Go further: my first class and basic function: BeginPlay and Tick
@@ -53,7 +53,4 @@ Homework: students implements at least two different types of AI.
 
 
 ## Lesson 5 - slides
-- Overview on multiplayer
-- Let's take a look to the engine, UE4's tools for multiplayer games.
-- Overview Custom movement character
-- Examination: students shows their project, they receive an evaluation.
+- 
