@@ -1,5 +1,5 @@
 # UE5_basics
-A project about the basics of the engine. This is used on a 5 lessons programm for students.
+A project about the basics of the engine. This is used on a 8 lessons programm for students.
 
 ## Lesson 1 - slides
 - Slide 1 to 5
@@ -28,7 +28,19 @@ Create also a pickable object.
 
 Homework: Students implements the shooting mechanic with c++. They also prepare some slides where they are gonna presents their own project, they define some objectives.
 
+
 ## Lesson 3 - no slides
+- Review of the videos.
+- AI: what does it means inside a big project? Is the land of opportunity, a never ending work.
+- Behaviour trees
+- AI inside Unreal: classes overview and how it works inside the engine. Blueprint first and C++ for second.
+- Let's tackle a real problem: implement an AI in a few time. Students are going to reproduce an AI, from scratch, inside the level.
+- Students are going to create a shooting AI
+
+Homework: students implements at least one AI.
+
+
+## Lesson 4 - no slides
 - Review of the homework. We are going to talk about shooting and the project.
 - Subsystem: what they are and How to use.
 - Let's implement a subsystem: students are going to implement a subsystem that counts the enemy in the level.
@@ -38,19 +50,26 @@ Homework: Students implements the shooting mechanic with c++. They also prepare 
 - Let's add the camera shake to our FirstPersonCharacter
 - Create an arsenal: students implement different weapons with custom range, ratio, mag capacity and damage and efx.
 
-Homework: students finish their implementation of the arsenal, they present their implmentation with a one minute video. The videos'll contain piece of code, how to setup weapons and how they are in play.
-
-
-## Lesson 4 - no slides
-- Review of the videos.
-- AI: what does it means inside a big project? Is the land of opportunity, a never ending work.
-- Behaviour trees
-- AI inside Unreal: classes overview and how it works inside the engine. Blueprint first and C++ for second.
-- Let's tackle a real problem: implement an AI in a few time. Students are going to reproduce an AI, from scratch, inside the level.
-- Students are going to create a shooting AI
-
-Homework: students implements at least two different types of AI.
+Homework: implement the combat state manager subsystem.
 
 
 ## Lesson 5 - slides
-- 
+- Overview on multiplayer
+- Let's take a look to the engine, UE4's tools for multiplayer games.
+- Overview Custom movement character
+
+Homework: implement the map gym.
+
+## Lesson 6 - no slides
+- Project review: looking at students work.
+
+Homewrok: Implement gates.
+
+
+## Lesson 7 - no slides
+- Implement the boss fight! This is a training before the the test.
+
+Homewrok: Finish the boss fight.
+
+## Lesson 8 - no slides
+- Assignment with evaluation!
