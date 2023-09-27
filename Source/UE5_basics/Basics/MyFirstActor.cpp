@@ -111,6 +111,6 @@ void AMyFirstActor::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	GEngine->AddOnScreenDebugMessage(896745, 2.f, FColor::Green, FString::Printf(TEXT("world time: %f"), GetWorld()->TimeSeconds));
-	GEngine->AddOnScreenDebugMessage(8967444, 2.f, FColor::Blue, "world time: "+FString::SanitizeFloat(GetWorld()->TimeSeconds));
+	//GEngine->AddOnScreenDebugMessage(896745, 2.f, FColor::Green, FString::Printf(TEXT("world time: %f"), GetWorld()->TimeSeconds));
+	//GEngine->AddOnScreenDebugMessage(8967444, 2.f, FColor::Blue, "world time: "+FString::SanitizeFloat(GetWorld()->TimeSeconds));
 }
