@@ -12,10 +12,7 @@
   <component name="ChangeListManager">
     <list default="true" id="aeaeb703-cd09-4f17-afcf-45ecd4c3d1b9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.UE5_basics/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UE5_basics/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/DefaultInput.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultInput.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/ThirdPerson/Maps/ThirdPersonMap.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/ThirdPerson/Maps/ThirdPersonMap.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/UE5_basics/Basics/MyFirstActor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/UE5_basics/Basics/MyFirstActor.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Lesson-2/BP_TPC.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Lesson-2/BP_TPC.uasset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -241,7 +238,8 @@
       <workItem from="1695744851854" duration="1920000" />
       <workItem from="1695747001601" duration="512000" />
       <workItem from="1695747544270" duration="1279000" />
-      <workItem from="1695805537015" duration="3142000" />
+      <workItem from="1695805537015" duration="3959000" />
+      <workItem from="1695846614950" duration="770000" />
     </task>
     <servers />
   </component>
