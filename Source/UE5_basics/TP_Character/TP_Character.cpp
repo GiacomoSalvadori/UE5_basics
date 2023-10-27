@@ -440,7 +440,7 @@ bool ATP_Character::CheckAroundMe(float Radius) {
 // Mechanic: Reload
 
 void ATP_Character::ReloadWeapon() {
-	if (!bIsUsingArch) {
+	if (!bIsUsingArch && !bIsReloading) {
 		GEngine->AddOnScreenDebugMessage(-1, 5.2f, FColor::Red, TEXT("Start Reload!"));
 		bIsReloading = true;
 		OnCharacterStartReload.Broadcast();

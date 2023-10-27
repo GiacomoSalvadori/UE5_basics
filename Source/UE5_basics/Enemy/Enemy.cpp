@@ -87,6 +87,7 @@ void AEnemy::FireWithSphereSweep() {
 
 void AEnemy::AimIn() {
 	OnCharacterAim.Broadcast();
+	OnEnemyAim();
 }
 
 void AEnemy::AimOut() {

@@ -33,9 +33,9 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Path")
 	AEnemyPath* PathToPatrol;
-		
 
-private:
+	UFUNCTION(BlueprintImplementableEvent)
+	void OnEnemyAim();
 	
 
 protected:
