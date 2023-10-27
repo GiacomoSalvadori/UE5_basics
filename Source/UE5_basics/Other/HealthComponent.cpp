@@ -10,7 +10,7 @@ UHealthComponent::UHealthComponent() {
 
 void UHealthComponent::BeginPlay() {
 	Super::BeginPlay();
-
+	
 	HealthDefaultValue = Health;
 	HealthMaxValue = Health;
 	ElapsedTime = 0.0f;

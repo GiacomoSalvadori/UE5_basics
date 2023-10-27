@@ -24,7 +24,7 @@ AMyFirstActor::AMyFirstActor()
 void AMyFirstActor::BeginPlay()
 {
 	Super::BeginPlay();
-
+	
 	OnActorBeginOverlap.AddDynamic(this, &AMyFirstActor::OnBeginOverlap);
 	OnActorEndOverlap.AddDynamic(this, &AMyFirstActor::OnEndOverlap);
 

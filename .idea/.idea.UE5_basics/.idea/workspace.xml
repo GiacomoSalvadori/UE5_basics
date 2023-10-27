@@ -13,6 +13,15 @@
     <list default="true" id="aeaeb703-cd09-4f17-afcf-45ecd4c3d1b9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.UE5_basics/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UE5_basics/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Lesson-2/BP_TPC.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Lesson-2/BP_TPC.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/TPS/BP_TPS_Anim.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/TPS/BP_TPS_Anim.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/3/FQ/V7NIN1BD9INHI2AQ033A4W.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/3/FQ/V7NIN1BD9INHI2AQ033A4W.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/UE5_basics/Basics/MyFirstActor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/UE5_basics/Basics/MyFirstActor.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/UE5_basics/Basics/MyFirstActor.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/UE5_basics/Basics/MyFirstActor.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/UE5_basics/Enemy/Enemy.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/UE5_basics/Enemy/Enemy.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/UE5_basics/Other/HealthComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/UE5_basics/Other/HealthComponent.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/UE5_basics/TP_Character/TP_Character.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/UE5_basics/TP_Character/TP_Character.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/UE5_basics/UE5_basics.Build.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Source/UE5_basics/UE5_basics.Build.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UE5_basics.uproject" beforeDir="false" afterPath="$PROJECT_DIR$/UE5_basics.uproject" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -240,6 +249,12 @@
       <workItem from="1695747544270" duration="1279000" />
       <workItem from="1695805537015" duration="3959000" />
       <workItem from="1695846614950" duration="770000" />
+      <workItem from="1697202057451" duration="6678000" />
+      <workItem from="1697533617448" duration="173000" />
+      <workItem from="1697536633381" duration="235000" />
+      <workItem from="1697806841439" duration="4500000" />
+      <workItem from="1697812017226" duration="4111000" />
+      <workItem from="1698401246301" duration="3419000" />
     </task>
     <servers />
   </component>

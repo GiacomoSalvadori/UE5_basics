@@ -20,7 +20,7 @@ public:
 	AEnemy();
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Weapon")
-		float AimOffset = 60.0f;
+	float AimOffset = 60.0f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Weapon")
 	FWeaponSlot WeaponSlot;
