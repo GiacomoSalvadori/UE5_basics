@@ -12,12 +12,9 @@
   <component name="ChangeListManager">
     <list default="true" id="aeaeb703-cd09-4f17-afcf-45ecd4c3d1b9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.UE5_basics/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UE5_basics/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Lesson-2/BP_TPC.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Lesson-2/BP_TPC.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Lesson-3/BP_Enemy.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Lesson-3/BP_Enemy.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/TPS/BP_TPS_Anim.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/TPS/BP_TPS_Anim.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/UE5_basics/Enemy/Enemy.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/UE5_basics/Enemy/Enemy.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/UE5_basics/Enemy/Enemy.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/UE5_basics/Enemy/Enemy.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/UE5_basics/TP_Character/TP_Character.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/UE5_basics/TP_Character/TP_Character.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Lesson-3/BP_Enemy_Anim.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Lesson-3/BP_Enemy_Anim.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/3/P3/O43ETCZTFMLWWH1CJ941H2.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/3/P3/O43ETCZTFMLWWH1CJ941H2.uasset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -250,7 +247,8 @@
       <workItem from="1697536633381" duration="235000" />
       <workItem from="1697806841439" duration="4500000" />
       <workItem from="1697812017226" duration="4111000" />
-      <workItem from="1698401246301" duration="6232000" />
+      <workItem from="1698401246301" duration="6885000" />
+      <workItem from="1700214291800" duration="1958000" />
     </task>
     <servers />
   </component>
