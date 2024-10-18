@@ -62,7 +62,10 @@ void AMyTimedActor::TimerCallback()
 		return;
 	}
 
-	World->GetTimerManager().ClearTimer(TimerHandler); // clean up the timer
+	if(!bUseInLoop)
+	{
+		World->GetTimerManager().ClearTimer(TimerHandler); // clean up the timer	
+	}	
 	
 	OnTimerRunsOut(); // this is the implementable event
 }

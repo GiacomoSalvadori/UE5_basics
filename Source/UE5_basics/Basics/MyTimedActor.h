@@ -23,7 +23,7 @@ public:
 
 protected:
 
-	// Actor time handler.
+	// Actor's time handler.
 	FTimerHandle TimerHandler;
 
 	virtual void BeginPlay() override;
