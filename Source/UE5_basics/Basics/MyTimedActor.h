@@ -19,7 +19,7 @@ class UE5_BASICS_API AMyTimedActor : public AActor
 	
 public:	
 	// Sets default values for this actor's properties
-	AMyTimedActor();
+	AMyTimedActor(const FObjectInitializer& ObjectInitializer);
 
 protected:
 
@@ -36,6 +36,9 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float Duration = 3.0f;
+
+	UPROPERTY()
+	UBillboardComponent* SpriteComponent;
 
 	UFUNCTION(BlueprintCallable)
 	void StartTimer();
